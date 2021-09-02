@@ -1,0 +1,34 @@
+{
+  "name": "create-koii-app",
+  "version": "1.0.0",
+  "description": "create-koii-app using typescript",
+  "main": "index.js",
+  "bin": {
+    "create-koi-app": "index.js"
+  },
+  "scripts": {
+    "test":  "echo 'Error: no test specified' && exit 1"
+  },
+  "files": [
+    "index.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koii-network/koii.X.git#dev",
+    "directory": "packages/create-koi-app"
+  },
+  "keywords": [
+    "koii-x"
+  ],
+  "author": "yousef@koii.network",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/koii-network/koii.X/issues"
+  },
+  "homepage": "https://github.com/koii-network/koii.X/tree/dev#readme",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^8.1.0",
+    "fs-extra": "^10.0.0"
+  }
+}
