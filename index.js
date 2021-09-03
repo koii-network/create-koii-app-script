@@ -28,10 +28,10 @@ console.log(msgBox);
 let projectName;
 const program = new commander.Command(packageJson.name)
   .version(packageJson.version)
-  .arguments("<project-directory>")
+  .arguments("[project-directory]")
   .usage(`${chalk.green("<project-directory>")}`)
   .action((name) => {
-    projectName = name;
+    projectName = name || "KoiiX";
   });
 program.parse(process.argv);
 // .option("--typescript", "ts");
@@ -40,11 +40,11 @@ const execSync = require("child_process").execSync;
 execSync("git clone https://github.com/koii-network/koii.X.git")
   .toString()
   .trim();
+
 console.log(chalk.green("Installing dependencies..."));
 fs.copySync(`${__dirname}/koii.X/`, projectName);
 fs.removeSync(`${__dirname}/koii.X/`);
-execSync(`cd ${projectName} && yarn`);
-fs.moveSync("/koii.X", " /" + projectName, { overwrite: true });
+execSync(`cd ${projectName} && yarn --ignore-engines`);
 
 console.log(chalk.blueBright.bold("yarn start" + " \n " + "to start the app"));
 
