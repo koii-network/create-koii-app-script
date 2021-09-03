@@ -37,15 +37,14 @@ program.parse(process.argv);
 // .option("--typescript", "ts");
 
 const execSync = require("child_process").execSync;
-
 execSync("git clone https://github.com/koii-network/koii.X.git")
   .toString()
   .trim();
-// fs.moveSync("/koii.X", " /" + projectName, { overwrite: true });
+console.log(chalk.green("Installing dependencies..."));
 fs.copySync(`${__dirname}/koii.X/`, projectName);
 fs.removeSync(`${__dirname}/koii.X/`);
-console.log(chalk.green("Installing dependencies..."));
 execSync(`cd ${projectName} && yarn`);
+fs.moveSync("/koii.X", " /" + projectName, { overwrite: true });
 
 console.log(chalk.blueBright.bold("yarn start" + " \n " + "to start the app"));
 
