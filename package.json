@@ -1,6 +1,6 @@
 {
   "name": "create-koii-app",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "A bootstrapping utility for building decentralised applications on the Koii Network -- https://koii.network ",
   "main": "index.js",
   "bin": {
@@ -30,6 +30,7 @@
     "boxen": "^5.0.1",
     "chalk": "^4.1.2",
     "commander": "^8.1.0",
-    "fs-extra": "^10.0.0"
+    "fs-extra": "^10.0.0",
+    "path": "^0.12.7"
   }
 }
