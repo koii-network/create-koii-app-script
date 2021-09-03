@@ -1,6 +1,6 @@
 {
   "name": "create-koii-app",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A bootstrapping utility for building decentralised applications on the Koii Network -- https://koii.network ",
   "main": "index.js",
   "bin": {
