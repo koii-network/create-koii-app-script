@@ -2,10 +2,29 @@
 const packageJson = require("./package.json");
 const chalk = require("chalk");
 const commander = require("commander");
-console.log(
-  // chalk.green(`${packageJson.name} v${packageJson.version}`),
-  "Installing koiiX App"
-);
+const fs = require("fs-extra");
+
+console.log("Installing koiiX App...");
+
+const boxen = require("boxen");
+const package = `${chalk.white.bold(
+  `${packageJson.name} v${packageJson.version}`
+)}`;
+const nodeVersion = `${chalk.green(`Node: ${process.version}`)}`;
+const description = `${chalk.blue.bold(`${packageJson.description}`)}`;
+const labels = package + "\n" + description + "\n" + nodeVersion + " ";
+const boxenOptions = {
+  padding: 1,
+  margin: 1,
+  borderStyle: "classic",
+  borderColor: "green",
+  backgroundColor: "#555555",
+  align: "center",
+};
+
+const msgBox = boxen(labels, boxenOptions);
+console.log(msgBox);
+
 let projectName;
 const program = new commander.Command(packageJson.name)
   .version(packageJson.version)
@@ -14,20 +33,32 @@ const program = new commander.Command(packageJson.name)
   .action((name) => {
     projectName = name;
   });
+program.parse(process.argv);
 // .option("--typescript", "ts");
+
 const execSync = require("child_process").execSync;
+
 execSync("git clone https://github.com/koii-network/koii.X.git")
   .toString()
   .trim();
+// fs.moveSync("/koii.X", " /" + projectName, { overwrite: true });
+fs.copySync(`${__dirname}/koii.X/`, projectName);
+fs.removeSync(`${__dirname}/koii.X/`);
+console.log(chalk.green("Installing dependencies..."));
+execSync(`cd ${projectName} && yarn`);
+
+console.log(chalk.blueBright.bold("yarn start" + " \n " + "to start the app"));
+
 console.log(
-  chalk.green(`${packageJson.name} v${packageJson.version}`),
-  "installed"
+  chalk.blue.bold("yarn storybook" + " \n " + "to start the storybook")
 );
-console.log(chalk.red(`${packageJson.name} v${packageJson.version}`), "error");
-const fs = require("fs-extra");
-// fs.ensureDirSync(projectName);
-// fs.writeFileSync(projectName, JSON.stringify(data));
-// fs.moveSync("/koii.X", "/" + projectName, { overwrite: true });
-// fs.copySync("/koii.X", "/" + projectName);
-execSync("Mv koii.X" + " " + projectName);
-console.log(program, "program");
+
+console.log(chalk.blueBright.bold("yarn test", " \n ", "to run the tests"));
+
+console.log(chalk.green.bold("We suggest that you begin by typing: "));
+
+console.log(chalk.white.bold(`cd ${projectName}`));
+
+console.log(chalk.green.bold("yarn start"));
+
+console.log(chalk.white.bold("Happy hacking"));

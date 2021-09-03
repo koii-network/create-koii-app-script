@@ -1,13 +1,13 @@
 {
   "name": "create-koii-app",
   "version": "1.0.0",
-  "description": "create-koii-app using typescript",
+  "description": "A bootstrapping utility for building decentralised applications on the Koii Network -- https://koii.network ",
   "main": "index.js",
   "bin": {
-    "create-koi-app": "index.js"
+    "create-koii-app": "index.js"
   },
   "scripts": {
-    "test":  "echo 'Error: no test specified' && exit 1"
+    "test": "echo 'Error: no test specified' && exit 1"
   },
   "files": [
     "index.js"
@@ -15,7 +15,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/koii-network/koii.X.git#dev",
-    "directory": "packages/create-koi-app"
+    "directory": "packages/create-koii-app"
   },
   "keywords": [
     "koii-x"
@@ -27,7 +27,9 @@
   },
   "homepage": "https://github.com/koii-network/koii.X/tree/dev#readme",
   "dependencies": {
+    "boxen": "^5.0.1",
     "chalk": "^4.1.2",
+    "cli-spinners": "^2.6.0",
     "commander": "^8.1.0",
     "fs-extra": "^10.0.0"
   }
