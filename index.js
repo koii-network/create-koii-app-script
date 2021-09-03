@@ -3,6 +3,7 @@ const packageJson = require("./package.json");
 const chalk = require("chalk");
 const commander = require("commander");
 const fs = require("fs-extra");
+const path = require("path");
 
 console.log("Installing koiiX App...");
 
@@ -37,15 +38,16 @@ program.parse(process.argv);
 // .option("--typescript", "ts");
 
 const execSync = require("child_process").execSync;
-execSync("git clone https://github.com/koii-network/koii.X.git")
+execSync(`mkdir ${projectName}`);
+execSync(`git clone https://github.com/koii-network/koii.X.git ${projectName}`)
   .toString()
   .trim();
 
 console.log(chalk.green("Installing dependencies..."));
-fs.copySync(`${__dirname}/koii.X/`, projectName);
-fs.removeSync(`${__dirname}/koii.X/`);
-execSync(`cd ${projectName} && yarn --ignore-engines`);
-
+// fs.copySync(`${__dirname}/koii.X/`, projectName);
+// fs.removeSync(`${__dirname}/koii.X/`);
+execSync(`cd ${projectName} && yarn install --ignore-engines`);
+// fs.rmdirSync(path.join(projectName, "bin"), { recursive: true });
 console.log(chalk.blueBright.bold("yarn start" + " \n " + "to start the app"));
 
 console.log(
