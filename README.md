@@ -9,7 +9,7 @@
    <a href="http://koii.network/" target="_blank"> <img src="https://img.shields.io/badge/made%20by-koii-blue" alt="made-by-koii" /></a>&nbsp;
 </p>
 
-## ⚡️ Quick start
+## ⚡️ How to create Koii Dapp
 
 Easy, run `npx create-koii-app` to create a Koii Dapp.
 
